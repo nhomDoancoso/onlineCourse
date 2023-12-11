@@ -16,7 +16,7 @@ public class CourseApiController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllCombo()
+    public async Task<IActionResult> GetAllCourse()
     {
         var course = await _courseOnlineContext.Courses
             .Include(s => s.Enrollments)
@@ -34,5 +34,13 @@ public class CourseApiController : Controller
         }).ToList();
 
         return Ok(coursesWithFullInfo);
+    }
+    
+    [HttpPost]
+    public async Task<IActionResult> CreateCourse(Course createModel) {
+        if(ModelState.IsValid) {
+             
+        }
+        return Ok();
     }
 }

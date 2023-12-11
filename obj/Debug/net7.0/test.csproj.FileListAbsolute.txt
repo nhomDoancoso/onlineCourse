@@ -8,6 +8,7 @@
 /Users/hiephuynh/test/test/bin/Debug/net7.0/test.pdb
 /Users/hiephuynh/test/test/bin/Debug/net7.0/Azure.Core.dll
 /Users/hiephuynh/test/test/bin/Debug/net7.0/Azure.Identity.dll
+/Users/hiephuynh/test/test/bin/Debug/net7.0/Google.Protobuf.dll
 /Users/hiephuynh/test/test/bin/Debug/net7.0/Humanizer.dll
 /Users/hiephuynh/test/test/bin/Debug/net7.0/Microsoft.Bcl.AsyncInterfaces.dll
 /Users/hiephuynh/test/test/bin/Debug/net7.0/Microsoft.Data.SqlClient.dll
@@ -28,6 +29,8 @@
 /Users/hiephuynh/test/test/bin/Debug/net7.0/Microsoft.SqlServer.Server.dll
 /Users/hiephuynh/test/test/bin/Debug/net7.0/Microsoft.Win32.SystemEvents.dll
 /Users/hiephuynh/test/test/bin/Debug/net7.0/Mono.TextTemplating.dll
+/Users/hiephuynh/test/test/bin/Debug/net7.0/MySql.Data.dll
+/Users/hiephuynh/test/test/bin/Debug/net7.0/MySql.Data.EntityFrameworkCore.dll
 /Users/hiephuynh/test/test/bin/Debug/net7.0/MySqlConnector.dll
 /Users/hiephuynh/test/test/bin/Debug/net7.0/Pomelo.EntityFrameworkCore.MySql.dll
 /Users/hiephuynh/test/test/bin/Debug/net7.0/System.CodeDom.dll
@@ -75,6 +78,3 @@
 /Users/hiephuynh/test/test/obj/Debug/net7.0/test.pdb
 /Users/hiephuynh/test/test/obj/Debug/net7.0/test.genruntimeconfig.cache
 /Users/hiephuynh/test/test/obj/Debug/net7.0/ref/test.dll
-/Users/hiephuynh/test/test/bin/Debug/net7.0/Google.Protobuf.dll
-/Users/hiephuynh/test/test/bin/Debug/net7.0/MySql.Data.dll
-/Users/hiephuynh/test/test/bin/Debug/net7.0/MySql.Data.EntityFrameworkCore.dll
