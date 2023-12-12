@@ -4,20 +4,19 @@ using Microsoft.EntityFrameworkCore;
 using test.Models;
 
 namespace test.Controllers;
-[Controller]
+
+[ApiController]
 [Route("api/[controller]")]
 public class CourseApiController : Controller
 {
-    
     private readonly CourseOnlineContext _courseOnlineContext;
-    public CourseApiController(CourseOnlineContext courseOnlineContext)
-    {
+
+    public CourseApiController(CourseOnlineContext courseOnlineContext) {
         _courseOnlineContext = courseOnlineContext;
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllCourse()
-    {
+    public async Task<IActionResult> GetAllCourse() {
         var course = await _courseOnlineContext.Courses
             .Include(s => s.Enrollments)
             .Include(s => s.Modules)
