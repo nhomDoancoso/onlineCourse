@@ -26,5 +26,4 @@ public partial class Student
     public virtual ICollection<StudentLesson> StudentLessons { get; } = new List<StudentLesson>();
 
     public virtual ICollection<StudentQuizAttempt> StudentQuizAttempts { get; } = new List<StudentQuizAttempt>();
-    
 }
