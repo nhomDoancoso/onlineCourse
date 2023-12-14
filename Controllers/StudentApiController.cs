@@ -39,6 +39,40 @@ public class StudentApiController : Controller
         return Ok(studentsWithFullInfo);
     }
 
+    [HttpGet("getStudentById/{studentId}")]
+    public async Task<IActionResult> GetStudentById(string studentId) 
+    {
+        if (string.IsNullOrEmpty(studentId))
+        {
+            return BadRequest("Invalid studentId");
+        }
+
+        var student = await _courseOnlineContext.Students
+            .Include(s => s.Enrollments)
+            .Include(s => s.StudentLessons)
+            .Include(s => s.StudentQuizAttempts)
+            .FirstOrDefaultAsync(s => s.StudentId == studentId);
+
+        if (student == null)
+        {
+            return NotFound();
+        }
+
+        var studentWithFullInfo = new
+        {
+            student.StudentId,
+            student.EmailAddress,
+            student.PasswordHash,
+            student.FirstName,
+            student.LastName,
+            student.Address,
+            student.Phone,
+            student.AvatarUrl
+        };
+
+        return Ok(studentWithFullInfo);
+    }
+
     [HttpPost("create")]
     public async Task<IActionResult> CreateStudent(Student student) {
         if (ModelState.IsValid)
@@ -65,5 +99,55 @@ public class StudentApiController : Controller
         };
 
         return BadRequest(invalidDataErrorResponse);
+    }
+
+    [HttpPut("update/{studentId}")]
+    public async Task<IActionResult> UpdateStudent(string studentId, Student updateModel)
+    {
+        var studentUpdate = await _courseOnlineContext.Students
+            .FirstOrDefaultAsync(p => p.StudentId == studentId);
+
+        if (studentId == null)
+        {
+            return NotFound();
+        }
+
+        studentUpdate.EmailAddress = updateModel.EmailAddress;
+        studentUpdate.FirstName = updateModel.FirstName;
+        studentUpdate.LastName = updateModel.LastName;
+        studentUpdate.Address = updateModel.Address;
+        studentUpdate.Phone = updateModel.Phone;
+        studentUpdate.AvatarUrl = updateModel.AvatarUrl;
+
+        _courseOnlineContext.Entry(studentUpdate).State = EntityState.Modified;
+        await _courseOnlineContext.SaveChangesAsync();
+
+        var updateSuccessResponse = new
+        {
+            Message = "student updated successfully"
+        };
+
+        return Ok(updateSuccessResponse);
+    }
+
+    [HttpDelete("delete/{studentId}")]
+    public async Task<IActionResult> DeleteStudent(string studentId)
+    {
+        var studentDelete = await _courseOnlineContext.Students.FindAsync(studentId);
+
+        if (studentDelete == null)
+        {
+            return NotFound();
+        }
+
+        _courseOnlineContext.Students.Remove(studentDelete);
+        await _courseOnlineContext.SaveChangesAsync();
+
+        var deleteSuccessResponse = new
+        {
+            Message = "Student deleted successfully"
+        };
+
+        return Ok(deleteSuccessResponse);
     }
 }
