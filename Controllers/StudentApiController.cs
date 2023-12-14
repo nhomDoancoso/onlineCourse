@@ -102,7 +102,7 @@ public class StudentApiController : Controller
     }
 
     [HttpPut("update/{studentId}")]
-    public async Task<IActionResult> UpdateStudent(string studentId, Student updateModel)
+    public async Task<IActionResult> UpdateStudent(string studentId, Student student)
     {
         var studentUpdate = await _courseOnlineContext.Students
             .FirstOrDefaultAsync(p => p.StudentId == studentId);
@@ -112,19 +112,25 @@ public class StudentApiController : Controller
             return NotFound();
         }
 
-        studentUpdate.EmailAddress = updateModel.EmailAddress;
-        studentUpdate.FirstName = updateModel.FirstName;
-        studentUpdate.LastName = updateModel.LastName;
-        studentUpdate.Address = updateModel.Address;
-        studentUpdate.Phone = updateModel.Phone;
-        studentUpdate.AvatarUrl = updateModel.AvatarUrl;
+        studentUpdate.EmailAddress = student.EmailAddress;
+        studentUpdate.FirstName = student.FirstName;
+        studentUpdate.LastName = student.LastName;
+        studentUpdate.Address = student.Address;
+        studentUpdate.Phone = student.Phone;
+        studentUpdate.AvatarUrl = student.AvatarUrl;
 
         _courseOnlineContext.Entry(studentUpdate).State = EntityState.Modified;
         await _courseOnlineContext.SaveChangesAsync();
 
         var updateSuccessResponse = new
         {
-            Message = "student updated successfully"
+            Message = "student updated successfully",
+            emailAddress = student.EmailAddress,
+            FirstName = student.FirstName,
+            LastName = student.LastName,
+            Address = student.Address,
+            Phone = student.Phone,
+            AvatarUrl = student.AvatarUrl
         };
 
         return Ok(updateSuccessResponse);
