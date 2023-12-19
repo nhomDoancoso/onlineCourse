@@ -6,7 +6,12 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+//auto reload page 
+builder.Services.AddRazorPages()
+    .AddRazorRuntimeCompilation();
+
 var connectionString = builder.Configuration.GetConnectionString("MySqlConn");
+
 
 builder.Services.AddDbContext<CourseOnlineContext>(options => 
 {

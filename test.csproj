@@ -15,6 +15,7 @@
     </PackageReference>
     <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="7.0.22" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0-silver.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="7.0.0" />
   </ItemGroup>
   
 </Project>
