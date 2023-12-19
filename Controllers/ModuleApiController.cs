@@ -154,7 +154,6 @@ public class ModuleApiController : Controller
         }
     }
 
-
     [HttpDelete("delete/{moduleId}")]
     public async Task<IActionResult> DeleteModule(string moduleId)
     {
@@ -164,7 +163,7 @@ public class ModuleApiController : Controller
         {
             return NotFound(new
             {
-                Message = "Module not found",
+                Message = "Module not found"
             });
         }
 
